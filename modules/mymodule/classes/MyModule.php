@@ -137,8 +137,24 @@ namespace
         public function hookDisplayLeftColumn($params)
         {
             $productsObj = new Product();
-            $products = count($productsObj->getProducts(Context::getContext()->language->id, 0,0, 'id_product', 'DESC', false, true));
-            $lastproduct = $productsObj->getProducts(Context::getContext()->language->id, 0,0, 'id_product', 'DESC', false, true)[0];
+            $products = count($productsObj->getProducts(
+                Context::getContext()->language->id,
+                0,
+                0,
+                'id_product',
+                'DESC',
+                false,
+                true
+            ));
+            $lastproduct = $productsObj->getProducts(
+                Context::getContext()->language->id,
+                0,
+                0,
+                'id_product',
+                'DESC',
+                false,
+                true
+            )[0];
 
             $this->context->smarty->assign(
                 array(

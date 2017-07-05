@@ -136,6 +136,11 @@ namespace
         }
         public function hookDisplayLeftColumn($params)
         {
+            $result = Db::getInstance()->getRow('
+            SELECT COUNT(DISTINCT p.`id_product`) AS total
+            FROM `'._DB_PREFIX_.'product` p
+            WHERE p.`active` = 1');
+            $this->smarty->assign('total', $result['total']);
             $this->context->smarty->assign(
                 array(
                 'my_module_name' => Configuration::get('MYMODULE_NAME'),

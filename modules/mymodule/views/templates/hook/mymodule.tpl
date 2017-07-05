@@ -9,6 +9,7 @@
       {/if}
       {l s='Hello %1$s!' sprintf=$my_module_name mod='mymodule'}
     </p>
+    <p>Total number of products : {$total}</p>
     <ul>
       <li><a href="{$my_module_link}"  title="{l s='Click this link' mod='mymodule'}">{l s='Click me!' mod='mymodule'}</a></li>
     </ul>

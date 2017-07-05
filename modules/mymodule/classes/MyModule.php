@@ -137,7 +137,7 @@ namespace
         public function hookDisplayLeftColumn($params)
         {
             $productsObj = new Product();
-            $products = count($productsObj->getProducts(
+            $products = $productsObj->getProducts(
                 Context::getContext()->language->id,
                 0,
                 0,
@@ -145,23 +145,13 @@ namespace
                 'DESC',
                 false,
                 true
-            ));
-            $lastproduct = $productsObj->getProducts(
-                Context::getContext()->language->id,
-                0,
-                0,
-                'id_product',
-                'DESC',
-                false,
-                true
-            )[0];
-
+            );
             $this->context->smarty->assign(
                 array(
                 'my_module_name' => Configuration::get('MYMODULE_NAME'),
                 'my_module_link' => $this->context->link->getModuleLink('mymodule', 'display'),
-                'total' => $products,
-                'lastproduct' => $lastproduct['name']
+                'total' => count($products),
+                'lastproduct' => $products[0]['name']
                 )
             );
             return $this->display(_PS_MODULE_DIR_.'mymodule', 'mymodule.tpl');
